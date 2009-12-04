@@ -1,9 +1,6 @@
 class BookmarksController < ApplicationController
   helper_method :current_user_session, :current_user
   
-  def add
-  end
-
   def add_api
     begin
       raise if params[:token] != current_user.token
@@ -13,18 +10,16 @@ class BookmarksController < ApplicationController
         if @bookmark.save
           begin
             response = nil
-            Net::HTTP.start(current_user.send_ip,15685) {|http|
-              http.timeout = 15
+            Net::HTTP.start(current_user.send_ip,current_user.port) {|http|
+              http.read_timeout = 5
               response = http.head("/open?url=#{URI.encode(@bookmark.url)}")
             }
-            # Todo, check response for it having been sent properly
-            p response
+            raise "The Target machine refused the connection" if response.class != Net::HTTPOK
             @bookmark.sent = true
             @bookmark.save
             format.json {render :json =>{:bookmarked => true,:sent => true } }
-          rescue
-            format.json {render :json =>{:bookmarked => true,:sent => false } }
-            raise
+          rescue Exception => e
+            format.json {render :json =>{:bookmarked => true,:sent => false, :message =>"#{ e } (#{ e.class })" } }
           end
         else
           format.json {render :json =>{:bookmarked => false,:sent => false } }
@@ -35,8 +30,5 @@ class BookmarksController < ApplicationController
         format.json { render :json => {:success => false, :message => 'not logged in'}, :status => :unauthorized }
       end
     end
-  end
-
-  def delete
   end
 end

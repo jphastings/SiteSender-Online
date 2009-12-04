@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_salt,:null => false
       t.string :persistence_token
       t.string :send_ip
+      t.integer :port
       t.string :token, :null => false
       t.timestamps
     end

@@ -25,6 +25,7 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session.save
         @user_session.user.send_ip = request.remote_ip
+        @user_session.user.port = params[:port].to_i
         if @user_session.user.save
           format.json { render :json => {:success => true} }
         else

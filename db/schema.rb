@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20091203193827) do
     t.string   "password_salt",     :null => false
     t.string   "persistence_token"
     t.string   "send_ip"
+    t.integer  "port"
     t.string   "token",             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
