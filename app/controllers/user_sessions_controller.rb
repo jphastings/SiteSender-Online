@@ -27,7 +27,7 @@ class UserSessionsController < ApplicationController
         @user_session.user.send_ip = request.remote_ip
         @user_session.user.port = params[:port].to_i
         if @user_session.user.save
-          format.json { render :json => {:success => true} }
+          format.json { render :json => {:success => true, :message => "Sites will be sent to #{@user_session.user.send_ip}:#{@user_session.user.port}"} }
         else
           format.json { render :json => {:success => false, :message => 'couldn\'t save your ip address'} }
         end
