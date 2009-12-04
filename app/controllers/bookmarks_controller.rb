@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
             @bookmark.save
             format.json {render :json =>{:bookmarked => true,:sent => true } }
           rescue Exception => e
-            format.json {render :json =>{:bookmarked => true,:sent => false, :message =>"#{ e } (#{ e.class })" } }
+            format.json {render :json =>{:bookmarked => true,:sent => false, :message =>"#{e} : #{current_user.send_ip},#{current_user.port}" } }
           end
         else
           format.json {render :json =>{:bookmarked => false,:sent => false } }
@@ -27,7 +27,7 @@ class BookmarksController < ApplicationController
       end
     rescue
       respond_to do |format|
-        format.json { render :json => {:success => false, :message => 'not logged in'}, :status => :unauthorized }
+        format.json { render :json => {:success => false, :message => 'You are not logged in'}, :status => :unauthorized }
       end
     end
   end
