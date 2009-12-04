@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
           begin
             response = nil
             Net::HTTP.start(current_user.send_ip,15685) {|http|
-              http.timeout = 5
+              http.timeout = 15
               response = http.head("/open?url=#{URI.encode(@bookmark.url)}")
             }
             # Todo, check response for it having been sent properly
@@ -24,6 +24,7 @@ class BookmarksController < ApplicationController
             format.json {render :json =>{:bookmarked => true,:sent => true } }
           rescue
             format.json {render :json =>{:bookmarked => true,:sent => false } }
+            raise
           end
         else
           format.json {render :json =>{:bookmarked => false,:sent => false } }
