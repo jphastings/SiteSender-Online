@@ -1,0 +1,123 @@
+# Logfile created on Fri Dec 04 01:31:27 +0000 2009
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:45:26) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 14ms (View: 12, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-04 01:45:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-04 01:45:39) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"MQInkbegCB1nr/TYp/Bu4sPW9TSKgSm+5oGUgIx5yYk=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+Redirected to http://localhost:3000/
+Completed in 167ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:45:39) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 5ms (View: 5, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing BookmarksController#add_api (for 82.25.210.2 at 2009-12-04 01:54:46) [GET]
+  Parameters: {"token"=>"", "action"=>"add_api", "url"=>"http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453", "controller"=>"bookmarks"}
+Completed in 13ms (View: 0, DB: 1) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?token=&url=http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-04 01:54:56) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+Completed in 135ms (View: 0, DB: 1) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing BookmarksController#add_api (for 82.25.210.2 at 2009-12-04 01:55:06) [GET]
+  Parameters: {"token"=>"", "action"=>"add_api", "url"=>"http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453", "controller"=>"bookmarks"}
+Completed in 4ms (View: 0, DB: 1) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?token=&url=http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453]
+
+
+Processing HomeController#show (for 82.25.210.2 at 2009-12-04 01:55:44) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 5ms (View: 3, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing HomeController#show (for 82.25.210.2 at 2009-12-04 01:58:09) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 2ms (View: 2, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing HomeController#show (for 82.25.210.2 at 2009-12-04 01:58:44) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 2ms (View: 2, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing HomeController#show (for 82.25.210.2 at 2009-12-04 01:59:33) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 2ms (View: 2, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 02:00:04) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 02:00:35) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 6ms (View: 6, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 128.243.220.21 at 2009-12-04 12:52:26) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 41ms (View: 39, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing UsersController#new (for 128.243.220.21 at 2009-12-04 12:52:28) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://jphastings.selfip.com/users/new]
+
+
+Processing UserSessionsController#new (for 128.243.220.21 at 2009-12-04 12:52:29) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://jphastings.selfip.com/login]
+
+
+Processing UserSessionsController#create (for 128.243.220.21 at 2009-12-04 12:52:38) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}, "action"=>"create", "authenticity_token"=>"2w8iXM0qLXAlf8aoX+ar/655bUhofaxFxn7sY92hNUc=", "controller"=>"user_sessions"}
+Redirected to http://jphastings.selfip.com:3000/
+Completed in 147ms (DB: 1) | 302 Found [http://jphastings.selfip.com/user_sessions]
+
+
+Processing HomeController#show (for 128.243.220.21 at 2009-12-04 12:52:38) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing BookmarksController#add_api (for 128.243.220.21 at 2009-12-04 12:52:45) [GET]
+  Parameters: {"token"=>"da91206a41540229ac5a4db96c508298d0107ea4", "action"=>"add_api", "url"=>"http://jphastings.selfip.com:3000/", "controller"=>"bookmarks"}
+Completed in 10ms (View: 0, DB: 1) | 200 OK [http://jphastings.selfip.com/api/mark?token=da91206a41540229ac5a4db96c508298d0107ea4&url=http://jphastings.selfip.com:3000/]

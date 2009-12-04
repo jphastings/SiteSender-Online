@@ -1,0 +1,2247 @@
+# Logfile created on Tue Dec 01 21:34:15 +0000 2009
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 21:34:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/controllers/users_controller.rb:3:in `new'
+  app/controllers/users_controller.rb:3:in `new'
+
+Rendered rescues/_trace (94.3ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2009-12-01 21:34:23) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;36;1mArticle Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: articles: SELECT * FROM "articles" [0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: articles: SELECT * FROM "articles" ):
+  app/controllers/articles_controller.rb:3:in `index'
+
+Rendered rescues/_trace (34.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (25.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateArticles (20080719200447)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "author_name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080719200447')[0m
+Migrating to CreateComments (20080719201435)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "author_name" varchar(255), "site_url" varchar(255), "content" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080719201435')[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("articles")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2009-12-01 21:34:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;36;1mArticle Load (0.4ms)[0m   [0;1mSELECT * FROM "articles" [0m
+Rendering template within layouts/application
+Rendering articles/index
+Completed in 35ms (View: 25, DB: 0) | 200 OK [http://0.0.0.0/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 21:34:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.6ms)
+Completed in 23ms (View: 15, DB: 0) | 200 OK [http://0.0.0.0/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-01 21:34:59) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"oT3HUGTj9dWCXilf0BMTM0YYRcFE9Ezz1khbp9NyXbQ=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "username"=>"jphastings", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."username") = 'jphastings') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'ea8cd5c55a9bb7fd5502bdb0523f5c7d3f8a3be79840d106082c3bc471387c0f285b6ddc501f4ad3515ee6472ca1f0213fdbae6e8fd8ca4e986bbd12e5fe01d8') LIMIT 1[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "username", "password_salt", "persistence_token", "email") VALUES('2009-12-01 21:34:59', '2afd1b46ba72724c72d365f9c393e118ac7229aede90a9f2ba715be775b9e434bb97b8bc61d19da13e55ae704596f2eb4df6472225c2cc832ab7c8bd50f96d50', '2009-12-01 21:34:59', 'jphastings', 'ck9E_3v9NTbkszJRvgX_', 'ea8cd5c55a9bb7fd5502bdb0523f5c7d3f8a3be79840d106082c3bc471387c0f285b6ddc501f4ad3515ee6472ca1f0213fdbae6e8fd8ca4e986bbd12e5fe01d8', 'jphastings@gmail.com')[0m
+Redirected to http://0.0.0.0:3000/
+Completed in 190ms (DB: 1) | 302 Found [http://0.0.0.0/users]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2009-12-01 21:34:59) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;35;1mArticle Load (0.3ms)[0m   [0mSELECT * FROM "articles" [0m
+Rendering template within layouts/application
+Rendering articles/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'ea8cd5c55a9bb7fd5502bdb0523f5c7d3f8a3be79840d106082c3bc471387c0f285b6ddc501f4ad3515ee6472ca1f0213fdbae6e8fd8ca4e986bbd12e5fe01d8') LIMIT 1[0m
+Completed in 19ms (View: 14, DB: 1) | 200 OK [http://0.0.0.0/]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-12-01 21:35:01) [GET]
+  Parameters: {"action"=>"edit", "id"=>"current", "controller"=>"users"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'ea8cd5c55a9bb7fd5502bdb0523f5c7d3f8a3be79840d106082c3bc471387c0f285b6ddc501f4ad3515ee6472ca1f0213fdbae6e8fd8ca4e986bbd12e5fe01d8') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (3.3ms)
+Completed in 86ms (View: 9, DB: 0) | 200 OK [http://0.0.0.0/users/current/edit]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2009-12-01 21:37:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+
+NameError (uninitialized constant ArticlesController::Article):
+  app/controllers/articles_controller.rb:3:in `index'
+
+Rendered rescues/_trace (30.0ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-01 21:37:35) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-01 21:40:26) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-01 21:40:34) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 21:41:29) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 21:41:44) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+
+ActionView::MissingTemplate (Missing template home/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 21:41:54) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #4 of app/views/home/show.html.erb:
+1: <% title "Articles" %>
+2: 
+3: <div id="articles">
+4: <% for article in @articles %>
+5:   <h2>
+6:     <%= link_to h(article.name), article %>
+7:     <span class="comments">(<%= pluralize(article.comments.size, 'comment') %>)</span>
+
+    app/views/home/show.html.erb:4
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:29:28) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #4 of app/views/home/show.html.erb:
+1: <% title "Welcome" %>
+2: 
+3: <div id="articles">
+4: <% for article in @articles %>
+5:   <h2>
+6:     <%= link_to h(article.name), article %>
+7:     <span class="comments">(<%= pluralize(article.comments.size, 'comment') %>)</span>
+
+    app/views/home/show.html.erb:4
+
+Rendered rescues/_trace (33.7ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:30:00) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 703ms (View: 701, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:30:05) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 93ms (View: 9, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:30:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2009-12-01 23:30:39) [POST]
+  Parameters: {"commit"=>"Submit", "user_session"=>{"username"=>"jphastings", "password"=>"[FILTERED]"}, "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".username) = 'jphastings') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 572ms (DB: 0) | 302 Found [http://localhost/user_sessions]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:30:40) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 1312ms (View: 1310, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2009-12-01 23:30:44) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 13ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:30:44) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 11ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:30:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 13ms (View: 5, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2009-12-01 23:30:53) [POST]
+  Parameters: {"commit"=>"Submit", "user_session"=>{"username"=>"farce", "password"=>"[FILTERED]"}, "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"user_sessions"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE (LOWER("users".username) = 'farce') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 19ms (View: 6, DB: 0) | 200 OK [http://localhost/user_sessions]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:32:08) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 11ms (View: 10, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 23:32:10) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (73.5ms)
+Completed in 235ms (View: 84, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 23:32:52) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (4.7ms)
+Completed in 19ms (View: 12, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("articles")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("comments")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 23:33:43) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (14.4ms)
+Completed in 39ms (View: 30, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-01 23:33:49) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '18cf113fe2cd61b153badcaaf189a0789a19f9e8294e1cffd7fa0c84df8bbd6099a8963395ad52496b9fd3691900ccfc9997ba0785f50fe9997a6741c4218bf5') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (8.7ms)
+Completed in 172ms (View: 15, DB: 1) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (8.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (6.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255), "current_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-01 23:34:59) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "current_ip", "password_salt", "persistence_token", "email") VALUES('2009-12-01 23:34:59', 'd4567aa975e07fc516f18979651168918424ab81ae2b4fae413c255ba9910d3ec1ad666858ef46dab866c430016f1fe8ee7dffcf3b619170e30d5463bf9c1892', '2009-12-01 23:34:59', NULL, 'hL0Uf1fFtnpY--whTp8Q', 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41', 'jphastings@gmail.com')[0m
+Redirected to http://localhost:3000/
+Completed in 173ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:34:59) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 148ms (View: 146, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-12-01 23:35:02) [GET]
+  Parameters: {"action"=>"edit", "id"=>"current", "controller"=>"users"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (3.8ms)
+Completed in 53ms (View: 15, DB: 0) | 200 OK [http://localhost/users/current/edit]
+
+
+Processing UsersController#update (for 127.0.0.1 at 2009-12-01 23:38:09) [PUT]
+  Parameters: {"commit"=>"Submit", "action"=>"update", "_method"=>"put", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "id"=>"1", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 70ms (DB: 0) | 302 Found [http://localhost/users/1]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:38:09) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 20ms (View: 18, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-12-01 23:38:16) [GET]
+  Parameters: {"action"=>"edit", "id"=>"current", "controller"=>"users"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (2.8ms)
+Completed in 17ms (View: 4, DB: 0) | 200 OK [http://localhost/users/current/edit]
+
+
+Processing UsersController#update (for 127.0.0.1 at 2009-12-01 23:38:18) [PUT]
+  Parameters: {"commit"=>"Submit", "action"=>"update", "_method"=>"put", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "id"=>"1", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 13ms (DB: 0) | 302 Found [http://localhost/users/1]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:38:18) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 13ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:38:27) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:38:28) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 19ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:39:56) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+Completed in 18ms (View: 16, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (28.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (18.5ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255), "current_login_ip" varchar(255), "last_login_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:41:05) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 44ms (View: 41, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:41:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 85ms (View: 20, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 23:41:09) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.4ms)
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 25ms (View: 17, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-01 23:41:18) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'e3e1715579490321f1e2a24511fd2aaba5cae679079116dfc9264b340dc7f18874683bee58454994244a9b71232609fa39268d38e22755821373aa1d22d56c41') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "updated_at", "current_login_ip", "password_salt", "persistence_token", "last_login_ip", "email") VALUES('2009-12-01 23:41:18', 'bff4d7eea049c187b342ece975ee4e6ad45b61a9360647622b7bc57ed8becaee0954963d193ecad2ced0575782105a9bd1286e2a723df1ed834d9e2177f33c42', '2009-12-01 23:41:18', '127.0.0.1', '6C0f1TpsLb6cAZSZOXyh', '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041', NULL, 'jphastings@gmail.com')[0m
+Redirected to http://localhost:3000/
+Completed in 184ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:41:18) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+Completed in 82ms (View: 80, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 192.168.0.105 at 2009-12-01 23:41:57) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 15ms (View: 13, DB: 0) | 200 OK [http://jp-imac.local/]
+
+
+Processing UserSessionsController#new (for 192.168.0.105 at 2009-12-01 23:42:01) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://jp-imac.local/login]
+
+
+Processing UserSessionsController#create (for 192.168.0.105 at 2009-12-01 23:42:20) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}, "action"=>"create", "authenticity_token"=>"h64v0JMZzoq4/Glp6/bmkSO9TEfWgw94K+omCmUDA/U=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Update (24.6ms)[0m   [0mUPDATE "users" SET "current_login_ip" = '192.168.0.105', "updated_at" = '2009-12-01 23:42:20', "last_login_ip" = '127.0.0.1' WHERE "id" = 1[0m
+Redirected to http://jp-imac.local:3000/
+Completed in 89ms (DB: 25) | 302 Found [http://jp-imac.local/user_sessions]
+
+
+Processing HomeController#show (for 192.168.0.105 at 2009-12-01 23:42:21) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 32ms (View: 30, DB: 1) | 200 OK [http://jp-imac.local/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (61.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (35.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255), "send_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (111.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:46:24) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 35ms (View: 33, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:50:38) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 75ms (View: 73, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:50:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 66ms (View: 17, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-01 23:50:44) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.5ms)
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 25ms (View: 18, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:50:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 57ms (View: 48, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UserSessionsController#index (for 127.0.0.1 at 2009-12-01 23:50:58) [GET]
+  Parameters: {"action"=>"index", "controller"=>"user_sessions"}
+
+ActionController::UnknownAction (No action responded to index. Actions: create, destroy, new, and new_api):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UserSessionsController#show (for 127.0.0.1 at 2009-12-01 23:51:03) [GET]
+  Parameters: {"action"=>"show", "id"=>"new_api", "controller"=>"user_sessions"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, new, and new_api):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-01 23:51:15) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 15ms (View: 6, DB: 0) | 200 OK [http://localhost/user_sessions/new]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-01 23:54:09) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+
+NameError (uninitialized constant UserSessionsController::RestController):
+  app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (94.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#new_api (for 127.0.0.1 at 2009-12-01 23:54:38) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+
+NameError (uninitialized constant UserSessionsController::RestController):
+  app/controllers/user_sessions_controller.rb:23
+
+Rendered rescues/_trace (29.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-01 23:56:26) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 99ms (View: 97, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-01 23:56:30) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+
+ActionView::MissingTemplate (Missing template user_sessions/new_api.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-01 23:56:43) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 80ms (View: 78, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-01 23:59:05) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/user_sessions_controller.rb:25:in `json'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+  app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (35.9ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-01 23:59:50) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+
+Errno::ENOENT (No such file or directory - /Users/jp/Dropbox/Projects/sitesender/remote/app/views/user_sessions/new_api.json.erb):
+  app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (39.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:00:08) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+Completed in 6ms (View: 4, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:01:13) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/user_sessions/new_api.json.erb:
+1: <% form_for @user_session do |f| %>
+2: <% end %>
+3: 
+4: <%=JSON.dump()%>
+
+    app/views/user_sessions/new_api.json.erb:1
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (39.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:03:20) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 136ms (View: 134, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:04:02) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1035c5838>) on line #7 of app/views/user_sessions/new_api.json.erb:
+4: 
+5: 	<%=JSON.dump()%>
+6: <% else %>
+7: <%=JSON.dump({:error=>403,:message=>"Not authenticated"})%>
+8: <% end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:7
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (52.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:04:20) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1036df160>) on line #7 of app/views/user_sessions/new_api.json.erb:
+4: 
+5: 	<%=JSON.dump()%>
+6: <% else %>
+7: <%=JSON.dump({'error'=>403,'message'=>"Not authenticated"})%>
+8: <% end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:7
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (38.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:04:30) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (only generation of JSON objects or arrays allowed) on line #7 of app/views/user_sessions/new_api.json.erb:
+4: 
+5: 	<%=JSON.dump()%>
+6: <% else %>
+7: <%=JSON.dump(40)%>
+8: <% end %>
+
+    json (1.2.0) lib/json/common.rb:185:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:7
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (169.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:04:37) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 16ms (View: 15, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:04:38) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 15ms (View: 13, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:05:33) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 83ms (View: 81, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:05:43) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:05:56) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (`@content_for_[40]' is not allowed as an instance variable name) on line #8 of app/views/user_sessions/new_api.json.erb:
+5: 
+6: 	JSON.dump()
+7: else
+8: 	yield JSON.dump([40])
+9: end %>
+
+    app/views/user_sessions/new_api.json.erb:8
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (108.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:06:13) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 16ms (View: 14, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:06:30) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1033e9e60>) on line #8 of app/views/user_sessions/new_api.json.erb:
+5: 
+6: 	JSON.dump()
+7: else
+8: 	return JSON.dump({'error'=>403,'message'=>"Not authenticated"})
+9: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:8
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (104.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:09:07) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1034f0ae8>) on line #8 of app/views/user_sessions/new_api.json.erb:
+5: 
+6: 	JSON.dump()
+7: else
+8: 	return JSON.dump( 'error'=>403,'message'=>"Not authenticated" )
+9: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:8
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (37.3ms)
+Rendered rescues/_request_and_response (0.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:09:26) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x103697b80>) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	error = {'error'=>403,'message'=>"Not authenticated" }
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (38.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:09:53) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x103129db0>) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	p error = {'error'=>403,'message'=>"Not authenticated" }
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (39.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:10:09) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1031eb208>) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	p error = {'error'=>403,'message'=>"Not authenticated" }
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (41.6ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:10:38) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `[]' for #<JSON::Ext::Generator::State:0x1032b64f8>) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	p error = {'error'=>403,'message'=>"Not authenticated" }
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:183:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (111.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:10:49) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (only generation of JSON objects or arrays allowed) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	error = "Not authenticated"
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:185:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (36.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:10:57) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (only generation of JSON objects or arrays allowed) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	error = "Not authenticated"
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:185:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (36.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:11:01) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+ActionView::TemplateError (only generation of JSON objects or arrays allowed) on line #9 of app/views/user_sessions/new_api.json.erb:
+6: 	JSON.dump()
+7: else
+8: 	error = "Not authenticated"
+9: 	return JSON.dump(error)
+10: end %>
+
+    json (1.2.0) lib/json/common.rb:185:in `generate'
+    json (1.2.0) lib/json/common.rb:310:in `dump'
+    app/views/user_sessions/new_api.json.erb:9
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (107.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:11:06) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 22ms (View: 20, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:11:06) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 13ms (View: 11, DB: 0) | 200 OK [http://localhost/apilogin]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-02 00:11:36) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 88ms (View: 86, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-02 00:11:38) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 20ms (View: 11, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-02 00:11:39) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (5.0ms)
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 24ms (View: 17, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-02 00:11:48) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"dkNk+TNULgu267eXmvhb9nTY+reJMVAhuxtj74Moj78=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9ebe9712c4170f03b5c1b72782e5d2b2d8a19329f4c9d07bd33c14e3c9e007b3bccd1af679b631ade1166a5ae07cfbf1ce48aff357519b903507b27a0dd6dd5e') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '30d0b4ec0e55a717bb0bc08b6253f01a47820a3a7977d2c9cf2d991656419e8d324855e3b2a79025327bc3a0e3b69ea0889f117cc17ed5f6adf3ef8ad790e041') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "send_ip", "updated_at", "password_salt", "persistence_token", "email") VALUES('2009-12-02 00:11:48', '4e330a413ab99f0f916e3c905ed0c75105647256f5ec23875a4b4e9629b1d084a82857dc650b012d249e1e76dbbbb4cb7f169545387d5dcb5ddfa78c88205b6a', NULL, '2009-12-02 00:11:48', 'QYzrsSN2kQIrQ57BX6Yv', '9ebe9712c4170f03b5c1b72782e5d2b2d8a19329f4c9d07bd33c14e3c9e007b3bccd1af679b631ade1166a5ae07cfbf1ce48aff357519b903507b27a0dd6dd5e', 'jphastings@gmail.com')[0m
+Redirected to http://localhost:3000/
+Completed in 455ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-02 00:11:48) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '9ebe9712c4170f03b5c1b72782e5d2b2d8a19329f4c9d07bd33c14e3c9e007b3bccd1af679b631ade1166a5ae07cfbf1ce48aff357519b903507b27a0dd6dd5e') LIMIT 1[0m
+Completed in 28ms (View: 25, DB: 1) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:11:52) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Rendering user_sessions/new_api
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '9ebe9712c4170f03b5c1b72782e5d2b2d8a19329f4c9d07bd33c14e3c9e007b3bccd1af679b631ade1166a5ae07cfbf1ce48aff357519b903507b27a0dd6dd5e') LIMIT 1[0m
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #3 of app/views/user_sessions/new_api.json.erb:
+1: <%
+2: if current_user
+3: 	form_for @user_session do |f|
+4: 	end
+5: 
+6: 	JSON.dump()
+
+    app/views/user_sessions/new_api.json.erb:3
+    app/controllers/user_sessions_controller.rb:24:in `new_api'
+
+Rendered rescues/_trace (120.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2009-12-02 00:13:05) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"user_sessions"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '9ebe9712c4170f03b5c1b72782e5d2b2d8a19329f4c9d07bd33c14e3c9e007b3bccd1af679b631ade1166a5ae07cfbf1ce48aff357519b903507b27a0dd6dd5e') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 17ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-02 00:13:05) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-02 00:13:21) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+Rendering user_sessions/new_api
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/apilogin?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:49:11) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x103231e60>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (88.3ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:50:16) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x1035d2dd0>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (29.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:50:40) [GET]
+  Parameters: {"user_session_email"=>"jphastings@gmail.com", "action"=>"new_api", "user_session_password"=>"[FILTERED]", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x103177ad8>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (31.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:51:12) [GET]
+  Parameters: {"user_session_email"=>"jphastings@gmail.com", "action"=>"new_api", "user_session_password"=>"[FILTERED]", "controller"=>"user_sessions"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x10334e348>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (29.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:51:21) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x103118308>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (98.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:55:31) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x103418d28>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (27.5ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 11:55:59) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x103178fa0>):
+  app/controllers/user_sessions_controller.rb:27:in `new_api'
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+
+Rendered rescues/_trace (95.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 18:44:19) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 36ms (View: 34, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 18:44:28) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+
+NameError (undefined local variable or method `success' for #<UserSessionsController:0x10333ec40>):
+  app/controllers/user_sessions_controller.rb:26:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (28.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 18:44:43) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (16.7ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Completed in 344ms (View: 1, DB: 17) | 200 OK [http://localhost/apilogin?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 19:32:08) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 397ms (View: 396, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 19:33:30) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 18ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:33:33) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Completed in 100ms (View: 1, DB: 0) | 401 Unauthorized [http://localhost/api/login]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:33:48) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions"}
+Completed in 17ms (View: 1, DB: 0) | 401 Unauthorized [http://localhost/api/login]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:34:31) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Completed in 268ms (View: 1, DB: 0) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:34:51) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+
+NoMethodError (undefined method `call' for nil:NilClass):
+  app/controllers/bookmarks_controller.rb:7:in `add_api'
+
+Rendered rescues/_trace (32.4ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:35:58) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark?url=http://google.com]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+Migrating to Bookmarks (20091203193827)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (16.9ms)[0m   [0mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255) NOT NULL, "sent" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091203193827')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bookmarks")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+Migrating to Bookmarks (20091203193827)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bookmarks")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (23.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255), "send_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+Migrating to Bookmarks (20091203193827)
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+Migrating to Bookmarks (20091203193827)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "url" varchar(255) NOT NULL, "sent" boolean DEFAULT 'f', "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091203193827')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("bookmarks")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-03 19:45:49) [GET]
+
+ActionController::RoutingError (No route matches "/bookmarks/add" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-03 19:46:05) [GET]
+
+ActionController::RoutingError (No route matches "/bookmarks" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#index (for 127.0.0.1 at 2009-12-03 19:46:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"bookmarks"}
+
+ActionController::UnknownAction (No action responded to index. Actions: add, add_api, and delete):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#show (for 127.0.0.1 at 2009-12-03 19:46:26) [GET]
+  Parameters: {"action"=>"show", "id"=>"add", "controller"=>"bookmarks"}
+
+ActionController::UnknownAction (No action responded to show. Actions: add, add_api, and delete):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#show (for 127.0.0.1 at 2009-12-03 19:46:53) [GET]
+  Parameters: {"action"=>"show", "id"=>"add", "controller"=>"bookmarks"}
+
+ActionController::UnknownAction (No action responded to show. Actions: add, add_api, and delete):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#show (for 127.0.0.1 at 2009-12-03 19:47:33) [GET]
+  Parameters: {"action"=>"show", "id"=>"add", "controller"=>"bookmarks"}
+
+ActionView::MissingTemplate (Missing template bookmarks/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:49:33) [GET]
+  Parameters: {"action"=>"add_api", "controller"=>"bookmarks"}
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark]
+
+
+Processing BookmarksController#show (for 127.0.0.1 at 2009-12-03 19:50:41) [GET]
+  Parameters: {"action"=>"show", "id"=>"add", "controller"=>"bookmarks"}
+
+ActionController::UnknownAction (No action responded to show. Actions: add, add_api, and delete):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:50:53) [GET]
+  Parameters: {"action"=>"add_api", "controller"=>"bookmarks"}
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:51:09) [GET]
+  Parameters: {"action"=>"add_api", "controller"=>"bookmarks"}
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark]
+
+
+Processing BookmarksController#show (for 127.0.0.1 at 2009-12-03 19:52:10) [GET]
+  Parameters: {"action"=>"show", "id"=>"add", "controller"=>"bookmarks"}
+
+ActionController::UnknownAction (No action responded to show. Actions: add, add_api, and delete):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:52:31) [GET]
+  Parameters: {"action"=>"add_api", "controller"=>"bookmarks"}
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 19:52:46) [GET]
+  Parameters: {"action"=>"add_api", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 161ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:54:43) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Completed in 389ms (View: 1, DB: 0) | 401 Unauthorized [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 19:55:05) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (17.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 182ms (View: 163, DB: 17) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-03 19:55:06) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 38ms (View: 28, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-03 19:55:07) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (125.8ms)
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 227ms (View: 196, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-03 19:55:17) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"MQInkbegCB1nr/TYp/Bu4sPW9TSKgSm+5oGUgIx5yYk=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;35;1mUser Load (16.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5734192df48494a6085d00112005a1d0e39d344b5137254f9f806d131fa9f2dc3b4f373273b13f44b16d539185fe281896608ad6a0becccbdae5d1d095037316') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Create (0.7ms)[0m   [0mINSERT INTO "users" ("created_at", "crypted_password", "send_ip", "updated_at", "password_salt", "persistence_token", "email") VALUES('2009-12-03 19:55:17', '16923964e99895c0448da1135b3eeca842f3e66fd06da546e4ef4b212dac70e4ea3345ec68a8c83fccb319a857c5bc1cccb05afaf2fd5cc8520d449c40de7813', NULL, '2009-12-03 19:55:17', 'RwcJgrWsM1lXTz3-9wc-', '5734192df48494a6085d00112005a1d0e39d344b5137254f9f806d131fa9f2dc3b4f373273b13f44b16d539185fe281896608ad6a0becccbdae5d1d095037316', 'jphastings@gmail.com')[0m
+Redirected to http://localhost:3000/
+Completed in 263ms (DB: 17) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 19:55:17) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '5734192df48494a6085d00112005a1d0e39d344b5137254f9f806d131fa9f2dc3b4f373273b13f44b16d539185fe281896608ad6a0becccbdae5d1d095037316') LIMIT 1[0m
+Completed in 14ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:55:22) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `send_ip=' for #<UserSession:0x10313b650>):
+  app/controllers/user_sessions_controller.rb:27:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (121.9ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:57:14) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `sendIp=' for #<UserSession:0x1033443c0>):
+  app/controllers/user_sessions_controller.rb:27:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (27.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:57:48) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `sendIp=' for #<User:0x102fd3600>):
+  app/controllers/user_sessions_controller.rb:27:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (103.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:57:55) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+
+NameError (undefined local variable or method `env' for #<UserSessionsController:0x1032f9b68>):
+  app/controllers/user_sessions_controller.rb:29:in `new_api'
+  app/controllers/user_sessions_controller.rb:25:in `new_api'
+
+Rendered rescues/_trace (44.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:58:36) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Completed in 13ms (View: 1, DB: 0) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:58:58) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Completed in 15ms (View: 1, DB: 0) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-03 19:59:52) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE "users" SET "updated_at" = '2009-12-03 19:59:52', "send_ip" = '127.0.0.1' WHERE "id" = 1[0m
+Completed in 16ms (View: 1, DB: 1) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:01:56) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+
+NoMethodError (undefined method `Bookmark' for #<User:0x10318b420>):
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (27.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:02:18) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 163ms (View: 1, DB: 0) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:03:27) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:03:27', 'f', '2009-12-03 20:03:27', 'http://google.com', 1)[0m
+Completed in 19ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:04:04) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:04:04', 'f', '2009-12-03 20:04:04', 'http://google.com', 1)[0m
+
+NoMethodError (undefined method `sendout' for #<Bookmark:0x103151f40>):
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (31.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:05:37) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:05:37', 'f', '2009-12-03 20:05:37', 'http://google.com', 1)[0m
+
+NoMethodError (undefined method `sendout' for #<Bookmark:0x10336de28>):
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (33.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:14:01) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:14:01', 'f', '2009-12-03 20:14:01', 'http://google.com', 1)[0m
+Completed in 20ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:14:42) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:14:42', 'f', '2009-12-03 20:14:42', 'http://google.com', 1)[0m
+
+NameError (undefined local variable or method `current_user' for #<Bookmark:0x10357ea78>):
+  app/models/bookmark.rb:6:in `sendout'
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (31.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:14:59) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `helper_method' for #<Class:0x103068728>):
+  app/models/bookmark.rb:2
+  app/controllers/bookmarks_controller.rb:8:in `add_api'
+
+Rendered rescues/_trace (113.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:15:48) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.4ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:15:48', 'f', '2009-12-03 20:15:48', 'http://google.com', 1)[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSQLite3::SQLException: no such column: users.bookmark_id: SELECT * FROM "users" WHERE ("users".bookmark_id = 6) LIMIT 1[0m
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: users.bookmark_id: SELECT * FROM "users" WHERE ("users".bookmark_id = 6)  LIMIT 1):
+  app/models/bookmark.rb:6:in `sendout'
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (39.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:16:20) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.5ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:16:20', 'f', '2009-12-03 20:16:20', 'http://google.com', 1)[0m
+Completed in 155ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:16:28) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:16:28', 'f', '2009-12-03 20:16:28', 'http://google.com', 1)[0m
+
+TypeError (can't dup Fixnum):
+  app/models/bookmark.rb:6:in `new'
+  app/models/bookmark.rb:6:in `sendout'
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (32.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:16:43) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:16:43', 'f', '2009-12-03 20:16:43', 'http://google.com', 1)[0m
+
+TypeError (can't dup Fixnum):
+  app/models/bookmark.rb:6:in `new'
+  app/models/bookmark.rb:6:in `sendout'
+  app/controllers/bookmarks_controller.rb:11:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (106.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:19:31) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:19:31', 'f', '2009-12-03 20:19:31', 'http://google.com', 1)[0m
+
+Errno::ENOENT (No such file or directory - http://127.0.0.1/open?url=http://google.com):
+  app/controllers/bookmarks_controller.rb:13:in `initialize'
+  app/controllers/bookmarks_controller.rb:13:in `open'
+  app/controllers/bookmarks_controller.rb:13:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (29.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:19:56) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:19:56', 'f', '2009-12-03 20:19:56', 'http://google.com', 1)[0m
+
+Errno::ENOENT (No such file or directory - http://127.0.0.1/open?url=http://google.com):
+  app/controllers/bookmarks_controller.rb:13:in `initialize'
+  app/controllers/bookmarks_controller.rb:13:in `open'
+  app/controllers/bookmarks_controller.rb:13:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (29.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:23:39) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.4ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:23:39', 'f', '2009-12-03 20:23:39', 'http://google.com', 1)[0m
+Completed in 96ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:24:36) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.3ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:24:36', 'f', '2009-12-03 20:24:36', 'http://google.com', 1)[0m
+Completed in 83ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:24:51) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.3ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:24:51', 'f', '2009-12-03 20:24:51', 'http://google.com', 1)[0m
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `initialize'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `open'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `connect'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:53:in `timeout'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/timeout.rb:93:in `timeout'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:560:in `connect'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:553:in `do_start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:542:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/net/http.rb:440:in `start'
+  app/controllers/bookmarks_controller.rb:14:in `add_api'
+  app/controllers/bookmarks_controller.rb:9:in `add_api'
+
+Rendered rescues/_trace (34.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:26:16) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://getdropbox.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.4ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:26:16', 'f', '2009-12-03 20:26:16', 'http://getdropbox.com', 1)[0m
+Completed in 20ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://getdropbox.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:26:26) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://google.com", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.8ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:26:26', 'f', '2009-12-03 20:26:26', 'http://google.com', 1)[0m
+  [4;36;1mBookmark Update (0.3ms)[0m   [0;1mUPDATE "bookmarks" SET "updated_at" = '2009-12-03 20:26:26', "sent" = 't' WHERE "id" = 16[0m
+Completed in 62ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://google.com]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:26:49) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://getdropbox.com", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.3ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:26:49', 'f', '2009-12-03 20:26:49', 'http://getdropbox.com', 1)[0m
+  [4;35;1mBookmark Update (0.3ms)[0m   [0mUPDATE "bookmarks" SET "updated_at" = '2009-12-03 20:26:49', "sent" = 't' WHERE "id" = 17[0m
+Completed in 41ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://getdropbox.com]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 20:31:12) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 85ms (View: 83, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 20:31:25) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 19ms (View: 18, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-03 20:31:26) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://localhost:3000/", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.3ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:31:26', 'f', '2009-12-03 20:31:26', 'http://localhost:3000/', 1)[0m
+  [4;36;1mBookmark Update (0.4ms)[0m   [0;1mUPDATE "bookmarks" SET "updated_at" = '2009-12-03 20:31:26', "sent" = 't' WHERE "id" = 18[0m
+Completed in 54ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?url=http://localhost:3000/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 20:31:26) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 20:32:02) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2009-12-03 20:32:04) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 80ms (View: 70, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2009-12-03 20:32:16) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}, "action"=>"create", "authenticity_token"=>"huFgCqd8VEdQ2fa+NR1sxY16vulAoNAcRe+h0TKeBXc=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 411ms (DB: 0) | 302 Found [http://localhost/user_sessions]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-03 20:32:16) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 16ms (View: 14, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 192.168.0.107 at 2009-12-03 20:35:27) [GET]
+  Parameters: {"url"=>"http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv"}
+
+ActionController::RoutingError (No route matches "/mark" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing BookmarksController#add_api (for 192.168.0.107 at 2009-12-03 20:35:54) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv", "controller"=>"bookmarks"}
+
+NoMethodError (undefined method `bookmarks' for nil:NilClass):
+  app/controllers/bookmarks_controller.rb:8:in `add_api'
+
+Rendered rescues/_trace (29.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing HomeController#show (for 192.168.0.107 at 2009-12-03 20:37:34) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 15ms (View: 13, DB: 0) | 200 OK [http://jp-imac.local/]
+
+
+Processing UserSessionsController#new (for 192.168.0.107 at 2009-12-03 20:37:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 84ms (View: 75, DB: 0) | 200 OK [http://jp-imac.local/login]
+
+
+Processing UserSessionsController#create (for 192.168.0.107 at 2009-12-03 20:37:40) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}, "action"=>"create", "authenticity_token"=>"oqGi3H1ZTtrgOjU7Yjy61Wm31VpD5CnXXS1G3P2hhNM=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Redirected to http://jp-imac.local:3000/
+Completed in 14ms (DB: 0) | 302 Found [http://jp-imac.local/user_sessions]
+
+
+Processing HomeController#show (for 192.168.0.107 at 2009-12-03 20:37:40) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 15ms (View: 14, DB: 0) | 200 OK [http://jp-imac.local/]
+
+
+Processing BookmarksController#add_api (for 192.168.0.107 at 2009-12-03 20:37:46) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.3ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:37:46', 'f', '2009-12-03 20:37:46', 'http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv', 1)[0m
+  [4;36;1mBookmark Update (0.7ms)[0m   [0;1mUPDATE "bookmarks" SET "updated_at" = '2009-12-03 20:37:46', "sent" = 't' WHERE "id" = 19[0m
+Completed in 49ms (View: 1, DB: 1) | 200 OK [http://jp-imac.local/api/mark?url=http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv]
+
+
+Processing BookmarksController#add_api (for 192.168.0.107 at 2009-12-03 20:40:38) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.6ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-03 20:40:38', 'f', '2009-12-03 20:40:38', 'http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv', 1)[0m
+  [4;35;1mBookmark Update (0.5ms)[0m   [0mUPDATE "bookmarks" SET "updated_at" = '2009-12-03 20:40:38', "sent" = 't' WHERE "id" = 20[0m
+Completed in 167ms (View: 1, DB: 1) | 200 OK [http://jp-imac.local/api/mark?url=http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv]
+
+
+Processing BookmarksController#add_api (for 82.25.210.2 at 2009-12-03 20:45:54) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv", "controller"=>"bookmarks"}
+Completed in 11ms (View: 1, DB: 0) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?url=http://lennym.posterous.com/wow-posterous-is-about-the-cleverest-thing-iv]
+
+
+Processing BookmarksController#add_api (for 82.132.136.164 at 2009-12-04 00:48:12) [GET]
+  Parameters: {"oe"=>"UTF-8", "action"=>"add_api", "url"=>"http://www.google.co.uk/search?q=pCR poly reaction", "hl"=>"en", "ie"=>"UTF-8", "client"=>"safari", "controller"=>"bookmarks"}
+Completed in 10ms (View: 1, DB: 0) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?url=http://www.google.co.uk/search?q=pCR+poly+reaction&ie=UTF-8&oe=UTF-8&hl=en&client=safari]
+
+
+Processing HomeController#show (for 82.132.136.164 at 2009-12-04 00:48:39) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+Completed in 11ms (View: 9, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing UserSessionsController#new (for 82.132.136.164 at 2009-12-04 00:49:14) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://jphastings.selfip.com/login]
+
+
+Processing UserSessionsController#create (for 82.132.139.230 at 2009-12-04 00:50:23) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}, "action"=>"create", "authenticity_token"=>"cJOMoedKDJA0c/6nx2igX8yQ/yLwlQUG4ZMYUlyeXhA=", "controller"=>"user_sessions"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+Redirected to http://jphastings.selfip.com:3000/
+Completed in 13ms (DB: 0) | 302 Found [http://jphastings.selfip.com/user_sessions]
+
+
+Processing HomeController#show (for 82.132.139.230 at 2009-12-04 00:50:24) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Completed in 14ms (View: 13, DB: 0) | 200 OK [http://jphastings.selfip.com/]
+
+
+Processing BookmarksController#add_api (for 82.132.139.230 at 2009-12-04 00:50:37) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.4ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-04 00:50:37', 'f', '2009-12-04 00:50:37', 'http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453', 1)[0m
+  [4;36;1mBookmark Update (0.4ms)[0m   [0;1mUPDATE "bookmarks" SET "updated_at" = '2009-12-04 00:50:37', "sent" = 't' WHERE "id" = 21[0m
+Completed in 51ms (View: 1, DB: 1) | 200 OK [http://jphastings.selfip.com/api/mark?url=http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453]
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (17.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090502203723)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) NOT NULL, "crypted_password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "persistence_token" varchar(255), "send_ip" varchar(255), "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090502203723')[0m
+Migrating to Bookmarks (20091203193827)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "url" varchar(255) NOT NULL, "sent" boolean DEFAULT 'f', "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091203193827')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("bookmarks")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:00:29) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 91ms (View: 89, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-12-04 01:00:31) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (13.6ms)
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 37ms (View: 27, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-04 01:00:41) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"MQInkbegCB1nr/TYp/Bu4sPW9TSKgSm+5oGUgIx5yYk=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:7:in `initialize'
+  app/controllers/users_controller.rb:7:in `new'
+  app/controllers/users_controller.rb:7:in `create'
+
+Rendered rescues/_trace (37.5ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-12-04 01:02:18) [POST]
+  Parameters: {"commit"=>"Submit", "action"=>"create", "authenticity_token"=>"MQInkbegCB1nr/TYp/Bu4sPW9TSKgSm+5oGUgIx5yYk=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO "users" ("created_at", "crypted_password", "send_ip", "token", "updated_at", "password_salt", "persistence_token", "email") VALUES('2009-12-04 01:02:18', '5c8b45d130bfa16a9d8f6400b57a3fc23f50349c86545b6d1c717df61f18bcb310856187592110250247215949a826cf2cbc2768272fc45e58e7e49e5856e506', NULL, 'ba7e96b04e476bc18f8b89e81fa9209cb43da1b4', '2009-12-04 01:02:18', '9_8qemn08dKb42A4fxH-', '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624', 'jphastings@gmail.com')[0m
+Redirected to http://localhost:3000/
+Completed in 143ms (DB: 1) | 302 Found [http://localhost/users]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:02:18) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+Completed in 15ms (View: 14, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:03:53) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+Completed in 19ms (View: 18, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing BookmarksController#add_api (for 82.132.139.230 at 2009-12-04 01:05:03) [GET]
+  Parameters: {"action"=>"add_api", "url"=>"http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 83ms (View: 1, DB: 1) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?url=http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-04 01:05:15) [GET]
+  Parameters: {"token"=>"ba7e96b04e476bc18f8b89e81fa9209cb43da1b4", "action"=>"add_api", "url"=>"http://localhost:3000/", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.4ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-04 01:05:15', 'f', '2009-12-04 01:05:15', 'http://localhost:3000/', 1)[0m
+Completed in 25ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?token=ba7e96b04e476bc18f8b89e81fa9209cb43da1b4&url=http://localhost:3000/]
+
+
+Processing BookmarksController#add_api (for 82.25.210.2 at 2009-12-04 01:10:08) [GET]
+  Parameters: {"token"=>"", "action"=>"add_api", "url"=>"http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 14ms (View: 1, DB: 1) | 401 Unauthorized [http://jphastings.selfip.com/api/mark?token=&url=http://www.amazon.com/review/R2XKMDXZHQ26YX/ref=cm_cr_pr_viewpnt/182-3723206-9226453]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-04 01:11:19) [GET]
+  Parameters: {"token"=>"ba7e96b04e476bc18f8b89e81fa9209cb43da1b4", "action"=>"add_api", "url"=>"http://localhost:3000/", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.5ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-04 01:11:19', 'f', '2009-12-04 01:11:19', 'http://localhost:3000/', 1)[0m
+Completed in 22ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?token=ba7e96b04e476bc18f8b89e81fa9209cb43da1b4&url=http://localhost:3000/]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-04 01:15:27) [GET]
+  Parameters: {"token"=>"ba7e96b04e476bc18f8b89e81fa9209cb43da1b4", "action"=>"add_api", "url"=>"http://localhost:3000/", "controller"=>"bookmarks"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+  [4;36;1mBookmark Create (0.5ms)[0m   [0;1mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-04 01:15:27', 'f', '2009-12-04 01:15:27', 'http://localhost:3000/', 1)[0m
+Completed in 159ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?token=ba7e96b04e476bc18f8b89e81fa9209cb43da1b4&url=http://localhost:3000/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:17:33) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+Completed in 109ms (View: 107, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:17:57) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+Completed in 19ms (View: 17, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing UserSessionsController#new_api (for 127.0.0.1 at 2009-12-04 01:18:41) [GET]
+  Parameters: {"action"=>"new_api", "controller"=>"user_sessions", "password"=>"[FILTERED]", "email"=>"jphastings@gmail.com"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE (LOWER("users".email) = 'jphastings@gmail.com') LIMIT 1[0m
+  [4;35;1mUser Update (0.5ms)[0m   [0mUPDATE "users" SET "updated_at" = '2009-12-04 01:18:41', "send_ip" = '127.0.0.1' WHERE "id" = 1[0m
+Completed in 145ms (View: 1, DB: 1) | 200 OK [http://localhost/api/login?email=jphastings@gmail.com&password=Halflife12]
+
+
+Processing BookmarksController#add_api (for 127.0.0.1 at 2009-12-04 01:18:46) [GET]
+  Parameters: {"token"=>"ba7e96b04e476bc18f8b89e81fa9209cb43da1b4", "action"=>"add_api", "url"=>"http://localhost:3000/", "controller"=>"bookmarks"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+  [4;35;1mBookmark Create (0.6ms)[0m   [0mINSERT INTO "bookmarks" ("created_at", "sent", "updated_at", "url", "user_id") VALUES('2009-12-04 01:18:46', 'f', '2009-12-04 01:18:46', 'http://localhost:3000/', 1)[0m
+  [4;36;1mBookmark Update (0.5ms)[0m   [0;1mUPDATE "bookmarks" SET "updated_at" = '2009-12-04 01:18:46', "sent" = 't' WHERE "id" = 4[0m
+Completed in 111ms (View: 1, DB: 1) | 200 OK [http://localhost/api/mark?token=ba7e96b04e476bc18f8b89e81fa9209cb43da1b4&url=http://localhost:3000/]
+
+
+Processing HomeController#show (for 127.0.0.1 at 2009-12-04 01:18:46) [GET]
+  Parameters: {"action"=>"show", "controller"=>"home"}
+Rendering template within layouts/application
+Rendering home/show
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0e74847d2d0262fd982aada18ee2b480c48752ebebf0dcd922840c754c552c2e8dfa911a362561c377e06c6b9ba988070d2d7bd62e0bde8caebcc9d2c3a91624') LIMIT 1[0m
+Completed in 17ms (View: 15, DB: 0) | 200 OK [http://localhost/]
