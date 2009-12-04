@@ -2,7 +2,7 @@
 
 <div id="articles">
 <% if current_user %>
-	How exciting! Get the Bookmarklet: <a href="javascript:void(location.href='http://jphastings.selfip.com:3000/api/mark?token=<%=current_user.token%>&url='+location.href);">SiteSend!</a>
+	How exciting! Get the Bookmarklet: <a href="javascript:void(location.href='http://<%=request.host%>/api/mark?token=<%=current_user.token%>&url='+location.href);">SiteSend!</a>
 <% else %>
 	You're new here - you should register
 <% end %>
