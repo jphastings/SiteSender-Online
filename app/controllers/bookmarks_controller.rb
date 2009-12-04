@@ -14,6 +14,7 @@ class BookmarksController < ApplicationController
           begin
             response = nil
             Net::HTTP.start(current_user.send_ip,15685) {|http|
+              http.timeout = 5
               response = http.head("/open?url=#{URI.encode(@bookmark.url)}")
             }
             # Todo, check response for it having been sent properly
